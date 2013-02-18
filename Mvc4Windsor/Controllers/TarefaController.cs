@@ -9,11 +9,6 @@ namespace Mvc4Windsor.Controllers
     {
         private readonly ITarefaRepository _tarefaRepository;
 
-        public TarefaController() : this(new TarefaWebServiceRepository(new Dependencia()))
-        {
-            
-        }
-
         public TarefaController(ITarefaRepository tarefaRepository)
         {
             _tarefaRepository = tarefaRepository;
