@@ -5,7 +5,12 @@ namespace Mvc4Windsor.Models.Repository
 {
     public class TarefaEntityFrameworkRepository : ITarefaRepository
     {
-        private readonly TarefasContext _db = new TarefasContext();
+        private readonly TarefasContext _db;
+
+        public TarefaEntityFrameworkRepository(TarefasContext dbContext)
+        {
+            _db = dbContext;
+        }
 
         public IEnumerable<Tarefa> All()
         {

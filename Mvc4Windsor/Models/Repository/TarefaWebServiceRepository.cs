@@ -59,6 +59,6 @@ namespace Mvc4Windsor.Models.Repository
 
     public class Dependencia : IDependencia
     {
-        
+
     }
 }

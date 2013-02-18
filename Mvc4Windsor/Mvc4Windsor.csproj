@@ -175,6 +175,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infra\Installers\ControllerInstaller.cs" />
+    <Compile Include="Infra\Installers\RepositoryInstallers.cs" />
     <Compile Include="Infra\WindsorControllerFactory.cs" />
     <Compile Include="Migrations\201302181804018_AddTarefa.cs" />
     <Compile Include="Migrations\201302181804018_AddTarefa.Designer.cs">
