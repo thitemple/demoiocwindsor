@@ -180,7 +180,10 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Repository\ITarefaRepository.cs" />
+    <Compile Include="Models\Repository\TarefaEntityFrameworkRepository.cs" />
     <Compile Include="Models\Tarefa.cs" />
+    <Compile Include="Models\TarefasContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

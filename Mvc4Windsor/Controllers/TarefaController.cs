@@ -1,20 +1,30 @@
-﻿using System.Data;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using Mvc4Windsor.Models;
+using Mvc4Windsor.Models.Repository;
 
 namespace Mvc4Windsor.Controllers
 {
     public class TarefaController : Controller
     {
-        private TarefasContext db = new TarefasContext();
+        private readonly ITarefaRepository _tarefaRepository;
+
+        public TarefaController() : this(new TarefaEntityFrameworkRepository())
+        {
+            
+        }
+
+        public TarefaController(ITarefaRepository tarefaRepository)
+        {
+            _tarefaRepository = tarefaRepository;
+        }
 
         //
         // GET: /Tarefa/
 
         public ActionResult Index()
         {
-            return View(db.Tarefas.ToList());
+            return View(_tarefaRepository.All().ToList());
         }
 
         //
@@ -22,7 +32,7 @@ namespace Mvc4Windsor.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Tarefa tarefa = db.Tarefas.Find(id);
+            Tarefa tarefa = _tarefaRepository.Find(id);
             if (tarefa == null)
             {
                 return HttpNotFound();
@@ -46,8 +56,7 @@ namespace Mvc4Windsor.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Tarefas.Add(tarefa);
-                db.SaveChanges();
+                _tarefaRepository.Add(tarefa);
                 return RedirectToAction("Index");
             }
 
@@ -59,7 +68,7 @@ namespace Mvc4Windsor.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Tarefa tarefa = db.Tarefas.Find(id);
+            Tarefa tarefa = _tarefaRepository.Find(id);
             if (tarefa == null)
             {
                 return HttpNotFound();
@@ -75,8 +84,7 @@ namespace Mvc4Windsor.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tarefa).State = EntityState.Modified;
-                db.SaveChanges();
+                _tarefaRepository.Update(tarefa);
                 return RedirectToAction("Index");
             }
             return View(tarefa);
@@ -87,7 +95,7 @@ namespace Mvc4Windsor.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Tarefa tarefa = db.Tarefas.Find(id);
+            Tarefa tarefa = _tarefaRepository.Find(id);
             if (tarefa == null)
             {
                 return HttpNotFound();
@@ -101,16 +109,8 @@ namespace Mvc4Windsor.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Tarefa tarefa = db.Tarefas.Find(id);
-            db.Tarefas.Remove(tarefa);
-            db.SaveChanges();
+            _tarefaRepository.Remove(id);
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            db.Dispose();
-            base.Dispose(disposing);
         }
     }
 }
