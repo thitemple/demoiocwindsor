@@ -9,7 +9,7 @@ namespace Mvc4Windsor.Controllers
     {
         private readonly ITarefaRepository _tarefaRepository;
 
-        public TarefaController() : this(new TarefaEntityFrameworkRepository())
+        public TarefaController() : this(new TarefaWebServiceRepository(new Dependencia()))
         {
             
         }

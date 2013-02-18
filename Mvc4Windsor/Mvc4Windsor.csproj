@@ -182,6 +182,7 @@
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Repository\ITarefaRepository.cs" />
     <Compile Include="Models\Repository\TarefaEntityFrameworkRepository.cs" />
+    <Compile Include="Models\Repository\TarefaWebServiceRepository.cs" />
     <Compile Include="Models\Tarefa.cs" />
     <Compile Include="Models\TarefasContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
