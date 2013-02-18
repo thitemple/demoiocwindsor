@@ -1,20 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
 
 namespace Mvc4Windsor.Models
 {
-    public class TarefasContext : DbContext
-    {
-        public TarefasContext()
-            : base("DefaultConnection")
-        {
-        }
-
-        public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<Tarefa> Tarefas { get; set; }
-    }
-
     [Table("UserProfile")]
     public class UserProfile
     {
