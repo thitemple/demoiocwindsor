@@ -20,14 +20,8 @@ namespace Mvc4Windsor.Infra.Installers
                 .ImplementedBy<Dependencia>()
                 .LifestyleTransient(),
                 Component.For<ITarefaRepository>()
-                    .ImplementedBy<TarefaWebServiceRepository>()
-                    .LifestyleTransient());
-
-
-            //container.Register(Classes.FromThisAssembly()
-            //    .Where(Component.IsInSameNamespaceAs<ITarefaRepository>())
-            //    .WithService.FirstInterface()
-            //    .LifestyleTransient());
+                .ImplementedBy<TarefaEntityFrameworkRepository>()
+                .LifestyleTransient());
 
         }
     }

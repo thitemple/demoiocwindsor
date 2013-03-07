@@ -1,0 +1,1 @@
+Demonstração usando ASP.NET MVC e Castle Windsor como container de inversão de controle
